@@ -4,66 +4,156 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Overbooked documentation for bounded unsafe enchantments on Paper.">
-    <title>Overbooked — Paper Plugin</title>
+    <meta name="theme-color" content="#0b1019">
+    <title>Overbooked | Paper Plugin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main>
-      <section class="hero">
-        <p class="eyebrow">PAPER 26.2+ · JAVA 25</p>
-        <h1>Over<br><em>booked.</em></h1>
-        <p class="lede">A bounded unsafe-enchantment system that makes endgame gear exciting without turning a co-op server into an economy wrecking ball.</p>
-      </section>
-      <section>
-        <h2>How it works</h2>
-        <p>Put two identical, single-enchantment books of the same level in an anvil. Once they are at the vanilla maximum, they combine into the next level. Each tier consumes two books and charges more XP, so higher tiers stay genuinely earned.</p>
-        <div class="formula">Sharpness V + Sharpness V → Sharpness VI</div>
-        <p>Default costs are 12, 20, 32, and 48 levels for successive unsafe tiers. Server owners can change every cap and cost in <code>config.yml</code>.</p>
-      </section>
-      <section>
-        <h2>Two modes, one ruleset</h2>
-        <div class="cards">
-          <article><p class="label">DEFAULT</p><h3>Simple mode</h3><p>Set <code>custom-station.enabled: false</code>. No resource pack, special recipe, or menus. Every normal anvil can create and apply legal unsafe enchantments.</p></article>
-          <article><p class="label">OPTIONAL</p><h3>Enhanced mode</h3><p>Set <code>custom-station.enabled: true</code>. Players craft a Netherite Infusion Anvil for a dedicated normal-anvil, unsafe-infusion, and name-styling interface.</p></article>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <a class="nav-logo" href="#top" aria-label="Overbooked home"><span class="logo-mark">O</span>Over<span>booked</span></a>
+        <div class="nav-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#modes">Modes</a>
+          <a href="#configure">Configure</a>
+          <a class="nav-download" href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.2/overbooked-0.2.2.jar">Download</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="plugin-hero" aria-labelledby="page-title">
+        <div class="rune" aria-hidden="true"><span>O</span></div>
+        <p class="eyebrow">BOUNDED UNSAFE ENCHANTMENTS</p>
+        <h1 id="page-title">Overbooked</h1>
+        <p class="hero-copy">Make endgame gear exciting without letting a few enchantments wreck your server economy.</p>
+        <div class="plugin-hero-meta" aria-label="Compatibility">
+          <span class="hero-badge">Paper 26.1+</span>
+          <span class="hero-badge">Java 25</span>
+          <span class="hero-badge">Closed source</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.2/overbooked-0.2.2.jar">Download 0.2.2 <span aria-hidden="true">&darr;</span></a>
+          <a class="button secondary" href="#how-it-works">Read the docs <span aria-hidden="true">&rarr;</span></a>
         </div>
       </section>
-      <section>
-        <h2>Netherite Infusion Anvil</h2>
-        <p>The station is intentionally expensive but reachable in co-op survival. It is indestructible in use: the netherite infusion prevents the normal anvil wear-and-break cycle.</p>
-        <pre><code>Amethyst Shard ·                 · Amethyst Shard
-Amethyst Shard · Netherite Ingot · Amethyst Shard
-                Anvil</code></pre>
-        <p>Enhanced mode can use an optional resource-pack model. Overbooked never sends, replaces, or competes with your server pack: merge <code>assets/overbooked/</code> into the pack managed by your existing resource-pack plugin, then set <code>custom-station.resource-pack.enabled: true</code>. Keep it false for a fully functional fallback station with the normal note-block visual. When enhanced mode and its recipe are enabled, the station is automatically added to every player's recipe book.</p>
+
+      <section id="how-it-works" class="section" aria-labelledby="how-title">
+        <div class="section-heading">
+          <p class="eyebrow">THE LOOP</p>
+          <h2 id="how-title">Earn every extra level.</h2>
+          <p>Put two identical, single-enchantment books of the same level in an anvil. Once they reach the vanilla maximum, they combine into the next level.</p>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card"><span class="step">01</span><h3>Match books</h3><p>Use two books with the same single enchantment and level.</p></article>
+          <article class="flow-card"><span class="step">02</span><h3>Pay the tier cost</h3><p>Each unsafe tier uses two books and costs progressively more XP.</p></article>
+          <article class="flow-card"><span class="step">03</span><h3>Respect the cap</h3><p>Configured limits stop the upgrade before it becomes a server problem.</p></article>
+        </div>
+        <div class="command-card"><span class="command-label">EXAMPLE</span><code>Sharpness V + Sharpness V <b>&rarr;</b> Sharpness VI</code></div>
+        <p class="fine-print">Default tier costs are 12, 20, 32, and 48 levels. Every cap and cost is configurable in <code>config.yml</code>.</p>
       </section>
-      <section>
-        <h2>Safe power defaults</h2>
-        <ul>
-          <li>Sharpness, Smite, Bane, Impaling, and Power: up to +2 levels.</li>
-          <li>Protection variants: up to +1 level.</li>
-          <li>Efficiency, Unbreaking, and Feather Falling: up to +2 levels.</li>
-          <li>Fortune, Looting, Luck of the Sea, and Mending remain disabled by default.</li>
-        </ul>
+
+      <section id="modes" class="section" aria-labelledby="modes-title">
+        <div class="section-heading">
+          <p class="eyebrow">YOUR SERVER, YOUR FLOW</p>
+          <h2 id="modes-title">Two modes. One ruleset.</h2>
+        </div>
+        <div class="mode-grid">
+          <article class="mode-card">
+            <p class="card-kicker">DEFAULT</p>
+            <h3>Simple mode</h3>
+            <p>Set <code>custom-station.enabled: false</code>. Every normal anvil can create and apply legal unsafe enchantments. No resource pack, special recipe, or extra menu needed.</p>
+          </article>
+          <article class="mode-card featured">
+            <p class="card-kicker">OPTIONAL</p>
+            <h3>Enhanced mode</h3>
+            <p>Set <code>custom-station.enabled: true</code>. Players craft a Netherite Infusion Anvil with a dedicated normal-anvil, unsafe-infusion, and name-styling interface.</p>
+          </article>
+        </div>
       </section>
-      <section>
-        <h2>Name styling in enhanced mode</h2>
-        <p>Style a renamed item with colors, preset gradients, and Unicode Small Caps—the no-resource-pack style popularized by servers such as DonutSMP. The custom MiniMessage action accepts safe colors, hex colors, gradients, and text decorations only; it rejects interactive tags.</p>
-        <pre><code>&lt;gradient:#22d3ee:#a855f7&gt;Stormbreaker&lt;/gradient&gt;</code></pre>
+
+      <section class="section station" aria-labelledby="station-title">
+        <div class="station-copy">
+          <p class="eyebrow">ENHANCED MODE</p>
+          <h2 id="station-title">Netherite Infusion Anvil</h2>
+          <p>The crafted station is intentionally expensive but achievable in co-op survival. It is indestructible in use, so there is no normal anvil wear-and-break cycle.</p>
+          <p>When the station and its recipe are enabled, Overbooked automatically adds it to every player's recipe book.</p>
+        </div>
+        <div class="recipe-card" aria-label="Netherite Infusion Anvil recipe">
+          <p class="recipe-title">CRAFTING RECIPE</p>
+          <div class="recipe-grid" aria-hidden="true">
+            <span class="shard"></span><span class="empty"></span><span class="shard"></span>
+            <span class="shard"></span><span class="ingot"></span><span class="shard"></span>
+            <span class="empty"></span><span class="anvil-item"></span><span class="empty"></span>
+          </div>
+          <p class="recipe-key"><span class="key-swatch shard-key"></span> Amethyst shard <span class="key-swatch ingot-key"></span> Netherite ingot <span class="key-swatch anvil-key"></span> Anvil</p>
+        </div>
       </section>
-      <section>
-        <h2>Live admin menu</h2>
-        <p>Operators can run <code>/overbooked</code> or <code>/overbooked menu</code> to tune the server without a restart. Left and right click adjust an individual enchant cap; Shift-click changes it by five. The same screen includes policy toggles, tier-cost controls, a relaxed co-op preset, and an immediate safe-off switch.</p>
+
+      <section class="section" aria-labelledby="safety-title">
+        <div class="section-heading">
+          <p class="eyebrow">CONTROLLED POWER</p>
+          <h2 id="safety-title">Safe starting limits.</h2>
+          <p>Start conservative, then tune each enchantment for the kind of progression your group enjoys.</p>
+        </div>
+        <div class="limits-grid">
+          <article><h3>+2 levels</h3><p>Sharpness, Smite, Bane, Impaling, Power, Efficiency, Unbreaking, and Feather Falling.</p></article>
+          <article><h3>+1 level</h3><p>Protection variants, so defense stays meaningful without trivializing danger.</p></article>
+          <article><h3>Disabled by default</h3><p>Fortune, Looting, Luck of the Sea, and Mending remain unavailable until you opt in.</p></article>
+        </div>
       </section>
-      <section>
-        <h2>Install</h2>
-        <ol>
-          <li>Run a current Paper server on Java 25.</li>
-          <li>Copy the Overbooked JAR into <code>plugins/</code>.</li>
-          <li>Start once, then edit <code>plugins/Overbooked/config.yml</code>.</li>
-          <li>Use <code>/overbooked reload</code> after configuration changes.</li>
-        </ol>
-        <p><a href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.1/overbooked-0.2.1.jar">Download Overbooked 0.2.1 JAR</a>. The plugin source and resource-pack sources are not public.</p>
+
+      <section id="configure" class="section configure" aria-labelledby="configure-title">
+        <div class="section-heading">
+          <p class="eyebrow">OPERATIONS</p>
+          <h2 id="configure-title">Tune it while players are online.</h2>
+          <p>Operators can run <code>/overbooked</code> or <code>/overbooked menu</code> to make live changes without a restart.</p>
+        </div>
+        <div class="config-grid">
+          <article class="config-card"><span class="config-icon">01</span><h3>Change caps</h3><p>Left and right click adjust a cap by one; Shift-click moves it by five.</p></article>
+          <article class="config-card"><span class="config-icon">02</span><h3>Set the economy</h3><p>Adjust tier costs, compatibility rules, and the relaxed co-op preset from the same screen.</p></article>
+          <article class="config-card"><span class="config-icon">03</span><h3>Safe-off switch</h3><p>Disable all unsafe enchantments immediately if you need to reset the pace.</p></article>
+        </div>
+      </section>
+
+      <section class="section name-styling" aria-labelledby="styling-title">
+        <div>
+          <p class="eyebrow">ENHANCED MODE</p>
+          <h2 id="styling-title">Give legendary items a proper name.</h2>
+          <p>The station can style renamed items with colors, preset gradients, and Unicode Small Caps. Its MiniMessage input accepts safe color, gradient, and decoration tags only; interactive tags are rejected.</p>
+        </div>
+        <div class="code-card"><span>STYLE EXAMPLE</span><code>&lt;gradient:#55ddff:#a855f7&gt;Stormbreaker&lt;/gradient&gt;</code></div>
+      </section>
+
+      <section class="section pack-section" aria-labelledby="pack-title">
+        <div class="section-heading">
+          <p class="eyebrow">RESOURCE-PACK FRIENDLY</p>
+          <h2 id="pack-title">Coexists with your current pack.</h2>
+          <p>The custom model is optional. Overbooked never sends, replaces, or competes with the pack managed by your existing resource-pack plugin.</p>
+        </div>
+        <div class="pack-note"><p>To use the model, merge <code>assets/overbooked/</code> into your existing pack and enable <code>custom-station.resource-pack.enabled</code>. Leave it off for a completely functional fallback station with the normal note-block visual.</p></div>
+      </section>
+
+      <section class="install-panel" aria-labelledby="install-title">
+        <div>
+          <p class="eyebrow">GET STARTED</p>
+          <h2 id="install-title">Install Overbooked.</h2>
+          <ol>
+            <li>Run a current Paper server on Java 25.</li>
+            <li>Copy the JAR into <code>plugins/</code>.</li>
+            <li>Start once, configure <code>plugins/Overbooked/config.yml</code>, then run <code>/overbooked reload</code>.</li>
+          </ol>
+        </div>
+        <a class="button primary" href="https://github.com/ThConMan/overbooked-docs/releases/download/v0.2.2/overbooked-0.2.2.jar">Download 0.2.2 <span aria-hidden="true">&darr;</span></a>
       </section>
     </main>
-    <footer>Built for controlled endgame progression.</footer>
+
+    <footer>
+      <p><span class="footer-logo">Over<span>booked</span></span> &middot; Built for controlled endgame progression.</p>
+      <p>Public downloads and documentation only. Plugin and resource-pack sources remain private.</p>
+    </footer>
   </body>
 </html>
