@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Anvil Ascendant documentation for bounded unsafe enchantments on Paper.">
+    <title>Anvil Ascendant — Paper Plugin</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">PAPER 26.2+ · JAVA 25</p>
+        <h1>Anvil<br><em>Ascendant.</em></h1>
+        <p class="lede">A bounded unsafe-enchantment system that makes endgame gear exciting without turning a co-op server into an economy wrecking ball.</p>
+      </section>
+      <section>
+        <h2>How it works</h2>
+        <p>Put two identical, single-enchantment books of the same level in an anvil. Once they are at the vanilla maximum, they combine into the next level. Each tier consumes two books and charges more XP, so higher tiers stay genuinely earned.</p>
+        <div class="formula">Sharpness V + Sharpness V → Sharpness VI</div>
+        <p>Default costs are 12, 20, 32, and 48 levels for successive unsafe tiers. Server owners can change every cap and cost in <code>config.yml</code>.</p>
+      </section>
+      <section>
+        <h2>Two modes, one ruleset</h2>
+        <div class="cards">
+          <article><p class="label">DEFAULT</p><h3>Simple mode</h3><p>Set <code>custom-station.enabled: false</code>. No resource pack, special recipe, or menus. Every normal anvil can create and apply legal unsafe enchantments.</p></article>
+          <article><p class="label">OPTIONAL</p><h3>Enhanced mode</h3><p>Set <code>custom-station.enabled: true</code>. Players craft a Netherite Infusion Anvil for a dedicated normal-anvil, unsafe-infusion, and name-styling interface.</p></article>
+        </div>
+      </section>
+      <section>
+        <h2>Netherite Infusion Anvil</h2>
+        <p>The station is intentionally expensive but reachable in co-op survival. It is indestructible in use: the netherite infusion prevents the normal anvil wear-and-break cycle.</p>
+        <pre><code>Amethyst Shard ·                 · Amethyst Shard
+Amethyst Shard · Netherite Ingot · Amethyst Shard
+                Anvil</code></pre>
+        <p>Enhanced mode uses an optional server resource pack for the custom station model and icon. If you do not want to host or require a pack, leave enhanced mode off—nothing about the unsafe-enchant system is lost.</p>
+      </section>
+      <section>
+        <h2>Safe power defaults</h2>
+        <ul>
+          <li>Sharpness, Smite, Bane, Impaling, and Power: up to +2 levels.</li>
+          <li>Protection variants: up to +1 level.</li>
+          <li>Efficiency, Unbreaking, and Feather Falling: up to +2 levels.</li>
+          <li>Fortune, Looting, Luck of the Sea, and Mending remain disabled by default.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Name styling in enhanced mode</h2>
+        <p>Style a renamed item with colors, preset gradients, and Unicode Small Caps—the no-resource-pack style popularized by servers such as DonutSMP. The custom MiniMessage action accepts safe colors, hex colors, gradients, and text decorations only; it rejects interactive tags.</p>
+        <pre><code>&lt;gradient:#22d3ee:#a855f7&gt;Stormbreaker&lt;/gradient&gt;</code></pre>
+      </section>
+      <section>
+        <h2>Install</h2>
+        <ol>
+          <li>Run a current Paper server on Java 25.</li>
+          <li>Copy the Anvil Ascendant JAR into <code>plugins/</code>.</li>
+          <li>Start once, then edit <code>plugins/AnvilAscendant/config.yml</code>.</li>
+          <li>Use <code>/anvilascendant reload</code> after configuration changes.</li>
+        </ol>
+      </section>
+    </main>
+    <footer>Built for controlled endgame progression.</footer>
+  </body>
+</html>

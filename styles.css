@@ -1,0 +1,19 @@
+:root { color-scheme: dark; --ink: #f5f1e8; --muted: #b8b2a8; --paper: #15131a; --card: #211d29; --violet: #b68cff; --cyan: #6ee7f9; }
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at 75% 8%, #3e2757 0, transparent 28rem), var(--paper); color: var(--ink); font: 18px/1.65 Georgia, serif; }
+main { width: min(960px, calc(100% - 3rem)); margin: auto; padding: 7rem 0 4rem; }
+.hero { min-height: 56vh; display: grid; align-content: center; }
+.eyebrow, .label { color: var(--cyan); font: 700 .72rem/1.2 Arial, sans-serif; letter-spacing: .18em; }
+h1 { font: 900 clamp(4rem, 12vw, 8rem)/.82 Georgia, serif; margin: 1rem 0 1.8rem; letter-spacing: -.07em; }
+h1 em { color: var(--violet); }
+h2 { font: 900 clamp(2rem, 5vw, 3.2rem)/1 Georgia, serif; margin: 5rem 0 1.4rem; letter-spacing: -.04em; }
+h3 { font: 900 1.6rem/1 Georgia, serif; margin: .4rem 0 1rem; }
+.lede { font-size: clamp(1.2rem, 2.5vw, 1.55rem); max-width: 40rem; color: var(--muted); }
+.formula, pre { background: #0e0d11; border: 1px solid #3d3548; border-radius: .5rem; padding: 1.1rem 1.3rem; font: 700 1rem/1.5 "Cascadia Code", monospace; overflow: auto; }
+.formula { color: var(--cyan); margin: 1.5rem 0; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+article { background: linear-gradient(135deg, #272030, var(--card)); border: 1px solid #4a3c5b; padding: 1.5rem; border-radius: .75rem; }
+code { color: var(--cyan); font: .9em "Cascadia Code", monospace; }
+li { margin: .5rem 0; }
+footer { color: var(--muted); text-align: center; padding: 2rem; border-top: 1px solid #302a38; font: .85rem Arial, sans-serif; }
+@media (max-width: 620px) { main { width: min(100% - 2rem, 960px); padding-top: 4rem; } .cards { grid-template-columns: 1fr; } }
